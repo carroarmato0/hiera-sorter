@@ -15,13 +15,17 @@ class HieraSorter:
         for file_path in options.files:
             self.sort_file(file_path)
 
+    def sort_anything(self, v):
+        if isinstance(v, CommentedMap):
+            v = self.sort_dict(v)
+        elif v is list:
+            v = sorted(v)
+        return v
+
     def sort_dict(self, initial_dict):
         result = []
         for k, v in sorted(initial_dict.iteritems()):
-            if isinstance(v, CommentedMap):
-                v = self.sort_dict(v)
-            elif v is list:
-                v = sorted(v)
+            v = self.sort_anything(v)
             result.append((k,v))
         cm = CommentedMap(result)
         if hasattr(initial_dict, '_yaml_comment'):
