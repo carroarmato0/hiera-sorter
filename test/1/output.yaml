@@ -1,0 +1,16 @@
+---
+###
+# My super awesome Application Service
+###
+acme_project_a::debug_enabled: false
+acme_project_a::enable_verbose_gc: false
+acme_project_a::properties:
+  'project_a':
+    values:
+      environment: ACMEPRD
+      random: "http://42.net/admin"
+      backend.url: "http://project_a.acme.com:8080/"
+      business.url: "http://example.com/businessservice"
+      funService.url: "http://funland.org/funservice"
+
+nfs_remote: fs.acme.org
